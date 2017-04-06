@@ -33,6 +33,13 @@ const buildQuery = (criteria) => {
 
 	const query = {};
 
+	//added index by using db.artists.createIndex({name:"text"})
+
+	if(criteria.name)
+	{
+		query.$text= { $search:criteria.name};
+	}
+
 	if(criteria.age)
 	{
 		query.age= {
